@@ -40,10 +40,10 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-warm-white shadow-2xl z-50 flex flex-col"
+            className="fixed top-0 right-0 h-full w-full max-w-md bg-deep-charcoal/90 backdrop-blur-xl border-l border-warm-white/10 text-warm-white shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-soft-sand">
+            <div className="flex items-center justify-between p-6 border-b border-warm-white/10">
               <h2 className="text-xl font-bold tracking-tight">Корзина ({items.length})</h2>
               <button onClick={() => setCartOpen(false)} className="hover:opacity-70 transition-opacity">
                 <X size={24} />
@@ -54,11 +54,11 @@ export function CartDrawer() {
             <div className="flex-grow overflow-y-auto p-6 space-y-6">
               {items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
-                  <div className="w-16 h-16 bg-soft-sand rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-warm-white/10 rounded-full flex items-center justify-center">
                     <span className="text-2xl opacity-50">🛒</span>
                   </div>
                   <p className="text-lg font-medium">Ваша корзина пуста</p>
-                  <Button variant="outline" onClick={() => setCartOpen(false)}>
+                  <Button variant="outline" onClick={() => setCartOpen(false)} className="border-warm-white/20 text-warm-white hover:bg-warm-white/10">
                     Продолжить покупки
                   </Button>
                 </div>
@@ -73,7 +73,7 @@ export function CartDrawer() {
                       exit={{ opacity: 0, x: -20 }}
                       className="flex gap-4"
                     >
-                      <div className="w-24 h-24 bg-soft-sand shrink-0">
+                      <div className="w-24 h-24 bg-warm-white/10 shrink-0">
                         <img 
                           src={item.product.images[0]} 
                           alt={item.product.title} 
@@ -87,30 +87,30 @@ export function CartDrawer() {
                             <h3 className="font-medium text-sm pr-4">{item.product.title}</h3>
                             <button 
                               onClick={() => removeItem(item.product.id)}
-                              className="text-graphite/50 hover:text-red-500 transition-colors"
+                              className="text-warm-white/50 hover:text-red-500 transition-colors"
                             >
                               <Trash2 size={16} />
                             </button>
                           </div>
                           
-                          <div className="text-xs text-graphite/70 mt-1 space-y-0.5">
+                          <div className="text-xs text-soft-sand/70 mt-1 space-y-0.5">
                             {item.selectedColor && <p>Цвет: {item.selectedColor}</p>}
                             {item.selectedMaterial && <p>Материал: {item.selectedMaterial}</p>}
                           </div>
                         </div>
 
                         <div className="flex items-center justify-between mt-2">
-                          <div className="flex items-center border border-soft-sand rounded-md">
+                          <div className="flex items-center border border-warm-white/20 rounded-md">
                             <button 
                               onClick={() => updateQuantity(item.product.id, Math.max(1, item.quantity - 1))}
-                              className="p-1 hover:bg-soft-sand transition-colors"
+                              className="p-1 hover:bg-warm-white/10 transition-colors"
                             >
                               <Minus size={14} />
                             </button>
                             <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
                             <button 
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="p-1 hover:bg-soft-sand transition-colors"
+                              className="p-1 hover:bg-warm-white/10 transition-colors"
                             >
                               <Plus size={14} />
                             </button>
@@ -128,7 +128,7 @@ export function CartDrawer() {
 
             {/* Footer */}
             {items.length > 0 && (
-              <div className="p-6 border-t border-soft-sand bg-warm-white">
+              <div className="p-6 border-t border-warm-white/10 bg-transparent">
                 <div className="flex justify-between text-lg font-bold mb-6">
                   <span>Итого</span>
                   <span>{getCartTotal().toLocaleString("ru-RU")} ₽</span>
