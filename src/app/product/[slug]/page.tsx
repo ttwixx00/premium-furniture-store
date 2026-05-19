@@ -25,3 +25,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return <ProductPageContent product={product} relatedProducts={relatedProducts} />;
 }
+
+export function generateStaticParams() {
+  return mockProducts.map((product) => ({
+    slug: product.slug,
+  }));
+}

@@ -27,12 +27,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="pt-28 pb-24 min-h-screen bg-warm-white">
+    <div className="pt-28 pb-24 min-h-screen bg-transparent">
       <div className="container mx-auto px-4 lg:px-8">
         
         <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-deep-charcoal mb-4">{categoryInfo.title}</h1>
-          <p className="text-graphite max-w-2xl">
+          <h1 className="text-4xl font-bold tracking-tight text-warm-white mb-4">{categoryInfo.title}</h1>
+          <p className="text-soft-sand max-w-2xl">
             {categoryInfo.description}
           </p>
         </div>
@@ -45,4 +45,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       </div>
     </div>
   );
+}
+
+export function generateStaticParams() {
+  return [
+    { slug: "sofas" },
+    { slug: "office-chairs" },
+    { slug: "cabinet-furniture" }
+  ];
 }
