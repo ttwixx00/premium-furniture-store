@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-white: #F7F3EE;
+  --color-deep-charcoal: #151515;
+  --color-oak-beige: #C8A27A;
+  --color-soft-sand: #E7D8C8;
+  --color-graphite: #252525;
+  --color-accent-brown: #8B5E3C;
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  :root {
+    --background: var(--color-deep-charcoal);
+    --foreground: var(--color-warm-white);
+  }
+
+  body {
+    background-color: transparent;
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow-x: hidden;
+    cursor: none; /* We will use a custom cursor */
+  }
+
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+
+  ::-moz-selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+
+  /* Lenis smooth scrolling defaults */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  /* Hide scrollbar for a cleaner look */
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, var(--color-deep-charcoal), var(--color-oak-beige));
+  }
+}
